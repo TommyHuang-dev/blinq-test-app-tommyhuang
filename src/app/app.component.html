@@ -23,8 +23,30 @@
       </div>
     </div>
 
+    <div class="col mb-3">
+      <div class="card">
+        <div class="card-header">
+          LTE Settings
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <label for="enbIdField" class="col-sm-3 col-form-label">eNB ID</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="enbIdField" [(ngModel)]="this.enbId" (keyup)="checkValid()">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="plmnIdField" class="col-sm-3 col-form-label">PLMN ID</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="plmnIdField" [(ngModel)]="this.plmnId" (keyup)="checkValid()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col-12 mb-3">
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!isValid">Submit</button>
     </div>
 
   </form>

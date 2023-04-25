@@ -24,6 +24,34 @@ export class AppComponent {
 
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+  enbId = "";
+  plmnId = "";
+  isValid = true
+
+  ngOnInit() { 
+    this.enbId = ''
+    this.plmnId = ''
+  }
+
+  checkValid() {
+    console.log(this.enbId)
+    console.log(this.plmnId)
+
+    if (this.enbId.length === 0 || this.plmnId.length > 6 || this.plmnId.length < 5) {
+      this.isValid = false
+    }
+    let enbVal: number = Number(this.enbId)
+    let plmnVal: number = Number(this.plmnId)
+    if (isNaN(enbVal) || isNaN(plmnVal)) {
+      this.isValid = false
+    }
+    if (0 <= enbVal && enbVal <= 268435455) {
+      this.isValid = true
+    } else {
+      this.isValid = false
+    }
+  }
+
   dailyMeanTemp: ChartOptions = {
     series: [
       {
