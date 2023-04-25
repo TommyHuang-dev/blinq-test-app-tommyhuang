@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import {
   ApexAxisChartSeries,
@@ -24,32 +24,36 @@ export class AppComponent {
 
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  enbId = "";
-  plmnId = "";
+  enbId: string = "";
+  plmnId: string = "";
+
   isValid = true
 
-  ngOnInit() { 
-    this.enbId = ''
-    this.plmnId = ''
-  }
-
   checkValid() {
-    console.log(this.enbId)
-    console.log(this.plmnId)
-
     if (this.enbId.length === 0 || this.plmnId.length > 6 || this.plmnId.length < 5) {
       this.isValid = false
+      return
     }
     let enbVal: number = Number(this.enbId)
     let plmnVal: number = Number(this.plmnId)
     if (isNaN(enbVal) || isNaN(plmnVal)) {
       this.isValid = false
+      return
     }
     if (0 <= enbVal && enbVal <= 268435455) {
       this.isValid = true
     } else {
       this.isValid = false
     }
+  }
+
+
+  toggleSize1() {
+    // TODO
+  }
+
+  toggleSize2() {
+    // TODO
   }
 
   dailyMeanTemp: ChartOptions = {

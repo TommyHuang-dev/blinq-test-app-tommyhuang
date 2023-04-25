@@ -32,13 +32,13 @@
           <div class="row mb-3">
             <label for="enbIdField" class="col-sm-3 col-form-label">eNB ID</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="enbIdField" [(ngModel)]="this.enbId" (keyup)="checkValid()">
+              <input type="text" class="form-control" id="enbIdField" [(ngModel)]="enbId" name="enb id" (input)="checkValid()">
             </div>
           </div>
           <div class="row mb-3">
             <label for="plmnIdField" class="col-sm-3 col-form-label">PLMN ID</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="plmnIdField" [(ngModel)]="this.plmnId" (keyup)="checkValid()">
+              <input type="text" class="form-control" id="plmnIdField" [(ngModel)]="plmnId" name="plmn id" (input)="checkValid()">
             </div>
           </div>
         </div>
@@ -58,6 +58,7 @@
       <div class="card">
         <div class="card-header">
           Chart I
+          <button (click)="toggleSize1()">Toggle View</button>
         </div>
         <div class="card-body">
             <apx-chart
@@ -73,6 +74,7 @@
       <div class="card">
         <div class="card-header">
           Chart II
+          <button (click)="toggleSize2()">Toggle View</button>
         </div>
         <div class="card-body">
             <apx-chart
