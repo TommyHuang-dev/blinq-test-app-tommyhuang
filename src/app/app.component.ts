@@ -47,13 +47,37 @@ export class AppComponent {
     }
   }
 
-
-  toggleSize1() {
-    // TODO
+  toggleFullSize(elem: any) {
+    let currentlyFullScreen = document.fullscreenElement != null;
+    if (currentlyFullScreen) {
+      // disable full view
+      document.exitFullscreen()
+      currentlyFullScreen = false
+    } else {
+      // enable full view
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+      currentlyFullScreen = true
+    }
   }
 
+  @ViewChild("chart1") chart1: any;
+  @ViewChild("chart2") chart2: any;
+
+  toggleSize1() {
+    const elem = this.chart1.nativeElement;
+    this.toggleFullSize(elem)
+  }
   toggleSize2() {
-    // TODO
+    const elem = this.chart2.nativeElement;
+    this.toggleFullSize(elem)
   }
 
   dailyMeanTemp: ChartOptions = {
